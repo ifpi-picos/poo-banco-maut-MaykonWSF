@@ -30,11 +30,25 @@ public class Conta {
 
     //Depositar valor
     public void depositar(double valor){
-        saldo += valor;
+        this.saldo += valor;
     }
 
     //Sacar valor
     public void sacar(double valor){
-        saldo -= valor;
+        if (this.saldo >= valor){
+            this.saldo -= valor;
+        } else {
+            System.out.println("Seu saldo é insuficiente");
+        }
+    }
+
+    //Realizar tranferência
+    public void transferir(Conta contaDestino, double valor){
+        if (this.saldo >= valor){
+            this.saldo -= valor;
+            contaDestino.saldo += valor;
+        } else {
+            System.out.println("Saldo insuficiente");
+        }
     }
 }

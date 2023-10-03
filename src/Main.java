@@ -37,30 +37,51 @@ public class Main {
 
             switch (action){
                 case 1:
+                    //Mostrar saldo das contas
                     System.out.println("O seu saldo é de:");
+
                     for (Conta conta : contas){
                         int a = 1;
                         System.out.println("Conta" + a + ":" + conta.getSaldo());
                         a ++;
                     }
+                    break;
 
                 case 2:
+                    //Realizar depósito
                     System.out.println("Quanto deseja depositar?");
                     double deposito = scanner.nextDouble();
                     System.out.println("Em que conta deseja depositar?");
 
                     for (Conta conta : contas);{
-                        int a = 1;
-                        System.out.println("Conta" + a + ":" + conta.getSaldo());
-                        a ++;
+                        int b = 1;
+                        System.out.println("Conta" + b + ":" + conta.getSaldo());
+                        b ++;
                     }
 
-                    int numeroConta = scanner.nextInt();
-                    Conta contaDeposito = contas.get(numeroConta - 1);
+                    int numeroContaDeposito = scanner.nextInt();
+                    Conta contaDeposito = contas.get(numeroContaDeposito - 1);
                     contaDeposito.depositar(deposito);
                     System.out.println("Você realizou um deposito de " + deposito);
+                    
+                    break;
 
                 case 3:
+                    //Realizar saque
+                    System.out.println("Quanto deseja sacar?");
+                    double saque = scanner.nextDouble();
+                    System.out.println("De que conta deseja sacar?");
+
+                    for (Conta conta : contas){
+                        int c = 1;
+                        System.out.println("Conta" + c + ":" + conta.getSaldo());
+                        c ++;
+                    }
+
+                    int numeroContaSaque = scanner.nextInt();
+                    Conta contaSaque = contas.get(numeroContaSaque - 1);
+                    contaSaque.sacar(saque);
+                    System.out.println("Você realizou um saque de " + saque);
 
                 case 4:
 
@@ -68,8 +89,9 @@ public class Main {
 
             }
             
-            scanner.close();
         }
+
+        scanner.close();
         
     }
 
