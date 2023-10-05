@@ -31,12 +31,15 @@ public class Conta {
     //Depositar valor
     public void depositar(double valor){
         this.saldo += valor;
+        System.out.println("Você realizou um deposito de " + valor);
     }
 
     //Sacar valor
     public void sacar(double valor){
         if (this.saldo >= valor){
             this.saldo -= valor;
+            System.out.println("Você realizou um saque de " + valor);
+
         } else {
             System.out.println("Seu saldo é insuficiente");
         }

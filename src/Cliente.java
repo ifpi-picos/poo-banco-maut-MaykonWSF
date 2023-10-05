@@ -5,10 +5,10 @@ public class Cliente{
     private String nome;
     private final String cpf;
     private String dataNascimento;
-    private String endereco;
+    private Endereco endereco;
     private List<Conta> contas = new ArrayList<>();
 
-    public Cliente(String nome, String cpf, String dataNascimento, String endereco){
+    public Cliente(String nome, String cpf, String dataNascimento, Endereco endereco){
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -27,7 +27,7 @@ public class Cliente{
         return dataNascimento;
     }
 
-    public String getEndereco(){
+    public Endereco getEndereco(){
         return endereco;
     }
 
