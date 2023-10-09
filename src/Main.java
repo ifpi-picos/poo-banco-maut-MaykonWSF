@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Endereco endereco1 = new Endereco("Simão Cirineu", 00, "Pantanal", "Picos", "PIauí", "000000-00", "Brasil");
+        Endereco endereco1 = new Endereco("Simão Cirineu", 00, "Pantanal", "Picos", "PIauí", "00000-000", "Brasil");
         Cliente cliente1 = new Cliente("Maykon", "083.288.303-45", "08/07/2004", endereco1);
 
         Scanner scanner = new Scanner(System.in);
@@ -15,7 +15,7 @@ public class Main {
         int i = 0;
         while (i < n) {
             System.out.println("Qual a agência da conta " + (i+1) + "?");
-            String agencia = scanner.nextLine();
+            String agencia = scanner.nextLine();            
             System.out.println("Qual o número da conta " + (i+1) + "?");
             int numero = scanner.nextInt();
             System.out.println("Qual o saldo incial " + (i+1) + "?");
@@ -32,7 +32,7 @@ public class Main {
         int aux = 0;
 
         while (aux == 0) {
-            System.out.println("O que deseja fazer," + cliente1.getNome() + "?\n(1) Consultar extrato\n(2) Deposito\n(3) Saque\n(4) Tranferência\n(5) Sair");
+            System.out.println("O que deseja fazer," + cliente1.getNome() + "?\n(1) Consultar saldo\n(2) Deposito\n(3) Saque\n(4) Tranferência\n(5) Exibir extrato\n(6) sair" );
             int action = scanner.nextInt();
 
             switch (action) {
@@ -62,6 +62,7 @@ public class Main {
                     int numeroContaDeposito = scanner.nextInt();
                     Conta contaDeposito = contas.get(numeroContaDeposito - 1);
                     contaDeposito.depositar(deposito);
+                    System.out.println("O seu saldo atual é de " + contaDeposito.getSaldo());
 
                     break;
 
@@ -80,6 +81,7 @@ public class Main {
                     int numeroContaSaque = scanner.nextInt();
                     Conta contaSaque = contas.get(numeroContaSaque - 1);
                     contaSaque.sacar(saque);
+                    System.out.println("O seu saldo atual é de " + contaSaque.getSaldo());
 
                     break;
 
@@ -107,12 +109,27 @@ public class Main {
 
                     int numeroContaDestino = scanner.nextInt();
                     Conta contaDestino = contas.get(numeroContaDestino - 1);
-
                     contaOrigem.transferir(contaDestino, valorTranferencia);
 
                     break;
 
                 case 5:
+                    //Consultar extrato
+                    System.out.println("De que conta deseja consultar o extrato?");
+                    int f = 1;
+                    for (Conta conta : contas){
+                        System.out.println("Conta" + f + ":" + conta.getSaldo());
+                        f++;
+                    }
+
+                    int numeroContaConsulta = scanner.nextInt();
+                    Conta contaConsulta = contas.get(numeroContaConsulta - 1);
+                    contaConsulta.exibeExtrato();
+
+                    break;
+
+                case 6:
+                    //Fechar programa
                     aux = 1;
                     break;
 
