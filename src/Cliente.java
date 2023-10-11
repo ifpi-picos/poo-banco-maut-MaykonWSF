@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Cliente{
     private String nome;
@@ -38,5 +39,19 @@ public class Cliente{
     //Adicionar conta
     public void adicionarConta(Conta conta) {
         contas.add(conta);
+    }
+
+    public Conta escolherConta(){
+        int aux = 1;
+        for (Conta conta : contas){
+            System.out.println("--> Conta " + aux + ": R$" + conta.getSaldo());
+            aux ++;
+        }
+
+        Scanner scanner1 = new Scanner(System.in);
+        int numeroContaEscolhida = scanner1.nextInt();
+        Conta contaEscolhida = contas.get(numeroContaEscolhida -1);
+        
+        return contaEscolhida;
     }
 }

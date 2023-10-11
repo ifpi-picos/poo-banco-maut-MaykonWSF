@@ -13,6 +13,6 @@ public class Movimentacao {
 
     // @Override
     public String toString(){
-        return tipo + " de " + valor + " realizado " + " em " + data;
+        return tipo + " de R$" + valor + " realizado" + " em " + data;
     }
 }
