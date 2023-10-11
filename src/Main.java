@@ -11,11 +11,11 @@ public class Main {
         // Adicionar n contas ao cliente
         System.out.println("Quantas contas deseja criar?");
         int n = scanner.nextInt();
-
+        
         int i = 0;
         while (i < n) {
             System.out.println("Qual a agência da conta " + (i+1) + "?");
-            String agencia = scanner.nextLine();            
+            String agencia = scanner.next();            
             System.out.println("Qual o número da conta " + (i+1) + "?");
             int numero = scanner.nextInt();
             System.out.println("Qual o saldo incial " + (i+1) + "?");
@@ -32,78 +32,78 @@ public class Main {
         int aux = 0;
 
         while (aux == 0) {
-            System.out.println("O que deseja fazer," + cliente1.getNome() + "?\n(1) Consultar saldo\n(2) Deposito\n(3) Saque\n(4) Tranferência\n(5) Exibir extrato\n(6) sair" );
+            System.out.println("\nO que deseja fazer, " + cliente1.getNome() + "?\n(1) Consultar saldo\n(2) Deposito\n(3) Saque\n(4) Tranferência\n(5) Exibir extrato\n(6) sair" );
             int action = scanner.nextInt();
 
             switch (action) {
                 case 1:
                     // Mostrar saldo das contas
-                    System.out.println("O seu saldo é de:");
+                    System.out.println("\n *** O seu saldo é de: ***");
 
                     int a = 1;
                     for (Conta conta : contas) {
-                        System.out.println("Conta " + a + ": " + conta.getSaldo());
+                        System.out.println("--> Conta " + a + ": R$" + conta.getSaldo());
                         a++;
                     }
                     break;
 
                 case 2:
                     // Realizar depósito
-                    System.out.println("Quanto deseja depositar?");
+                    System.out.println("\n*** Quanto deseja depositar? ***");
                     double deposito = scanner.nextDouble();
-                    System.out.println("Em que conta deseja depositar?");
+                    System.out.println("\n*** Em que conta deseja depositar? ***");
 
                     int b = 1;
                     for (Conta conta : contas) {
-                        System.out.println("Conta" + b + ":" + conta.getSaldo());
+                        System.out.println("--> Conta" + b + ": R$" + conta.getSaldo());
                         b++;
                     }
 
                     int numeroContaDeposito = scanner.nextInt();
                     Conta contaDeposito = contas.get(numeroContaDeposito - 1);
                     contaDeposito.depositar(deposito);
-                    System.out.println("O seu saldo atual é de " + contaDeposito.getSaldo());
+                    System.out.println("O seu saldo atual é de R$" + contaDeposito.getSaldo());
 
                     break;
 
                 case 3:
                     // Realizar saque
-                    System.out.println("Quanto deseja sacar?");
+                    System.out.println("\n*** Quanto deseja sacar? ***");
                     double saque = scanner.nextDouble();
-                    System.out.println("De que conta deseja sacar?");
+                    System.out.println("\n*** De que conta deseja sacar? ***");
 
                     int c = 1;
                     for (Conta conta : contas) {
-                        System.out.println("Conta" + c + ":" + conta.getSaldo());
+                        System.out.println("--> Conta" + c + ": R$" + conta.getSaldo());
                         c++;
                     }
 
                     int numeroContaSaque = scanner.nextInt();
                     Conta contaSaque = contas.get(numeroContaSaque - 1);
                     contaSaque.sacar(saque);
-                    System.out.println("O seu saldo atual é de " + contaSaque.getSaldo());
+                    System.out.println("O seu saldo atual é de R$" + contaSaque.getSaldo());
 
                     break;
 
                 case 4:
                     // Realizar tranferência
-                    System.out.println("De que conta deseja realizar a tranferência?");
+                    System.out.println("\n*** De que conta deseja realizar a tranferência? ***");
                     int d = 1;
                     for (Conta conta : contas) {
-                        System.out.println("Conta" + d + ":" + conta.getSaldo());
+                        System.out.println("--> Conta" + d + ": R$" + conta.getSaldo());
                         d++;
                     }
 
                     int numeroContaOrigem = scanner.nextInt();
                     Conta contaOrigem = contas.get(numeroContaOrigem - 1);
 
-                    System.out.println("Quanto deseja tranferir?");
+                    System.out.println("\n*** Quanto deseja tranferir? ***");
                     double valorTranferencia = scanner.nextDouble();
 
-                    System.out.println("Para que conta deseja tranferir?");
+                    System.out.println("\n*** Para que conta deseja tranferir? ***");
                     int e = 1;
                     for (Conta conta : contas) {
-                        System.out.println("Conta" + e + ":" + conta.getSaldo());
+                        System.out.println("--> Conta" + e + ": R$" + conta.getSaldo());
                         e++;
                     }
 
@@ -115,10 +115,10 @@ public class Main {
 
                 case 5:
                     //Consultar extrato
-                    System.out.println("De que conta deseja consultar o extrato?");
+                    System.out.println("\n*** De que conta deseja consultar o extrato? ***");
                     int f = 1;
                     for (Conta conta : contas){
-                        System.out.println("Conta" + f + ":" + conta.getSaldo());
+                        System.out.println("--> Conta" + f + ": R$" + conta.getSaldo());
                         f++;
                     }
 
