@@ -1,80 +1,53 @@
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-public class Conta {
-    private final String agencia;
+public abstract class Conta {
+    private int agencia;
     private final int numero;
-    private double saldo;
-    private Cliente cliente;
+    protected double saldo;
+    private String tipoConta;
 
-    List<Movimentacao> historicoMovimentacao;
-    
-    public Conta (String agencia, int numero, double saldo, Cliente cliente){
+    public Conta(int agencia, int numero, double saldo, String tipoConta) {
         this.agencia = agencia;
         this.numero = numero;
         this.saldo = saldo;
-        this.cliente = cliente;
-        this.historicoMovimentacao = new ArrayList<>();
+        this.tipoConta = tipoConta;
     }
 
-    //Getters
-    public String getAgencia(){
+    public int getAgencia() {
         return agencia;
-    }    
+    }
 
-    public int getNumero(){
+    public int getNumero() {
         return numero;
     }
 
-    public double getSaldo(){
+    public double getSaldo() {
         return saldo;
     }
 
-    public Cliente getCliente(){
-        return cliente;
+    public double setSaldo(double saldo) {
+        return this.saldo = saldo;
     }
 
-    //Depositar valor
-    public void depositar(double valor){
-        this.saldo += valor;
-        System.out.println("Você realizou um deposito de R$" + valor);
-        addHistoricoMovimentacao(valor, "Deposito");
+    public String getTipoConta() {
+        return tipoConta;
     }
-
-    //Sacar valor
-    public void sacar(double valor){
-        if (this.saldo >= valor){
-            this.saldo -= valor;
-            System.out.println("Você realizou um saque de R$" + valor);
-            addHistoricoMovimentacao(valor, "Saque");
-
-        } else {
-            System.out.println("Seu saldo é insuficiente");
+    
+    public void depositar(double valor) {
+        if (valor > 0){
+            this.saldo += valor;
+            System.out.println("Você depositou: R$" + valor + " na sua conta.");
+            System.out.println("Seu saldo atual é: R$" + this.saldo);
+        }else {
+            System.out.println("Valor de depósito inválido");
         }
     }
 
-    //Realizar tranferência
-    public void transferir(Conta contaDestino, double valor){
-        if (this.saldo >= valor){
+    public void sacar(double valor) {
+        if (valor > 0 && valor <= this.saldo) {
             this.saldo -= valor;
-            contaDestino.saldo += valor;
-            System.out.println("Você realizou uma tranferência de R$" + valor);
-            addHistoricoMovimentacao(valor, "Tranferência");
-
         } else {
-            System.out.println("Saldo insuficiente");
+            System.out.println("Saldo insuficiente ou valor de saque inválido");
         }
     }
 
-    public void exibeExtrato(){
-        System.out.println("####### Extrato #########");
-        historicoMovimentacao.forEach(m -> System.out.println(m));
-        System.out.println("Saldo atual: " + this.saldo);
-        System.out.println("################");
-    }
-
-    private void addHistoricoMovimentacao(double valor, String tipo) {
-        Movimentacao m = new Movimentacao(LocalDate.now(), valor, tipo);
-        historicoMovimentacao.add(m);
-    }
+    public abstract void transferencia(Conta contaDestino, double valor);
 }
