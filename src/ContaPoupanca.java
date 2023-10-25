@@ -34,6 +34,7 @@ public class ContaPoupanca extends Conta{
 
             System.out.println("\n");
             notificacao.enviarNotificacao("saque", valor);
+
         } else {
             System.out.println("Saldo insuficiente ou valor de saque inválido");
         }
@@ -46,7 +47,7 @@ public class ContaPoupanca extends Conta{
             this.saldo -= (valor + taxa);
             contaDestino.setSaldo(contaDestino.getSaldo() + valor);
             System.out.println("Você transferiu: R$" + valor + " da sua conta poupança para a sua conta corrente.");
-
+            System.out.println("Seu saldo atual é: R$" + this.saldo);
             System.out.println("\n");
             notificacao.enviarNotificacao("tranferencia", valor);
         } else {

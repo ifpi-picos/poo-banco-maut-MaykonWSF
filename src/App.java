@@ -9,6 +9,7 @@ public class App {
         Conta contaPoupanca = new ContaPoupanca(321, 002, 200.00, "poupança", cliente1, new NotificacaoSMS(),0.1);
 
         // Métodos da conta corrente
+        System.out.println("\n");
         contaCorrente.depositar(100);
         System.out.println("\n");
         contaCorrente.sacar(50);

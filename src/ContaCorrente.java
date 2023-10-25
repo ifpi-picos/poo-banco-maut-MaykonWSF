@@ -29,13 +29,13 @@ public class ContaCorrente extends Conta{
             this.setSaldo(this.getSaldo() - valor);
             contaDestino.setSaldo(contaDestino.getSaldo() + valor);
             System.out.println("Você transferiu: R$" + valor + " da sua conta corrente para a sua conta poupança.");
-            transferenciaSemTaxa--;
             
             if (transferenciaSemTaxa <= 0){
                 double taxa = valor * 0.1;
                 this.setSaldo(this.getSaldo() - taxa);
             }
-
+            
+            transferenciaSemTaxa --;    
             System.out.println("Seu saldo atual é: R$" + this.getSaldo());
 
             System.out.println("\n");
