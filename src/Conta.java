@@ -60,13 +60,7 @@ public abstract class Conta {
         }
     }
 
-    public void sacar(double valor) {
-        if (valor > 0 && valor <= this.saldo) {
-            this.saldo -= valor;
-        } else {
-            System.out.println("Saldo insuficiente ou valor de saque inválido");
-        }
-    }
+    public abstract void sacar(double valor);
 
     public abstract void transferencia(Conta contaDestino, double valor);
 }

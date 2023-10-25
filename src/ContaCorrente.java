@@ -7,7 +7,7 @@ public class ContaCorrente extends Conta{
         this.chequeEspecial = chequeEspecial;
         this.transferenciaSemTaxa = 2;
     }
-
+    
     @Override
     public void sacar(double valor) {
         if (valor > 0 && valor <= this.saldo + this.chequeEspecial) {
@@ -23,6 +23,7 @@ public class ContaCorrente extends Conta{
         }
     }
 
+    @Override
     public void transferencia(Conta contaDestino, double valor) {
         if (valor > 0 && valor >= saldo + chequeEspecial){
             this.setSaldo(this.getSaldo() - valor);
