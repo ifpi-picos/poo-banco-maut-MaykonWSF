@@ -3,11 +3,11 @@ public class ContaCorrente extends Conta{
     private int transferenciaSemTaxa = 2;
 
     public ContaCorrente(int agencia, int numero, double saldo, String tipoConta, Cliente cliente, Notificacao notificacao, double chequeEspecial, int transacaoSemTaxa) {
-        super(agencia, numero, saldo, tipoConta, cliente, notificacao);
+        super(agencia, numero, saldo + chequeEspecial, tipoConta, cliente, notificacao);
         this.chequeEspecial = chequeEspecial;
         this.transferenciaSemTaxa = 2;
     }
-    
+
     @Override
     public void sacar(double valor) {
         if (valor > 0 && valor <= this.saldo + this.chequeEspecial) {
@@ -25,7 +25,7 @@ public class ContaCorrente extends Conta{
 
     @Override
     public void transferencia(Conta contaDestino, double valor) {
-        if (valor > 0 && valor >= saldo + chequeEspecial){
+        if (valor > 0 && valor <= saldo + chequeEspecial){
             this.setSaldo(this.getSaldo() - valor);
             contaDestino.setSaldo(contaDestino.getSaldo() + valor);
             System.out.println("Você transferiu: R$" + valor + " da sua conta corrente para a sua conta poupança.");

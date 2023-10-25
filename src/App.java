@@ -8,15 +8,22 @@ public class App {
         Conta contaCorrente = new ContaCorrente(123, 001, 100.00, "corrente", cliente1, new NotificacaoEmail(), 50.00, 2);
         Conta contaPoupanca = new ContaPoupanca(321, 002, 200.00, "poupança", cliente1, new NotificacaoSMS(),0.1);
 
+        // Métodos da conta corrente
         contaCorrente.depositar(100);
-        System.out.println("\n");
-        contaPoupanca.depositar(50);
         System.out.println("\n");
         contaCorrente.sacar(50);
         System.out.println("\n");
-        contaPoupanca.sacar(125);
-        System.out.println("\n");
         contaCorrente.transferencia(contaPoupanca, 100);
+        System.out.println("\n");
+        contaCorrente.transferencia(contaPoupanca, 25);
+        System.out.println("\n");
+        contaCorrente.transferencia(contaPoupanca, 25);
+        System.out.println("\n");
+
+        // Métodos da conta poupança
+        contaPoupanca.depositar(50);
+        System.out.println("\n");
+        contaPoupanca.sacar(125);
         System.out.println("\n");
         contaPoupanca.transferencia(contaCorrente, 75);
     }
