@@ -3,12 +3,16 @@ public abstract class Conta {
     private final int numero;
     protected double saldo;
     private String tipoConta;
+    private Cliente cliente;
+    protected Notificacao notificacao;
 
-    public Conta(int agencia, int numero, double saldo, String tipoConta) {
+    public Conta(int agencia, int numero, double saldo, String tipoConta, Cliente cliente, Notificacao notificacao) {
         this.agencia = agencia;
         this.numero = numero;
         this.saldo = saldo;
         this.tipoConta = tipoConta;
+        this.cliente = cliente;
+        this.notificacao = notificacao;
     }
 
     public int getAgencia() {
@@ -30,12 +34,27 @@ public abstract class Conta {
     public String getTipoConta() {
         return tipoConta;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Notificacao getNotificacao() {
+        return notificacao;
+    }
+
+    public void setAgencia(int agencia) {
+        this.agencia = agencia;
+    }
     
     public void depositar(double valor) {
         if (valor > 0){
             this.saldo += valor;
             System.out.println("Você depositou: R$" + valor + " na sua conta.");
             System.out.println("Seu saldo atual é: R$" + this.saldo);
+            
+            System.out.println("\n");
+            notificacao.enviarNotificacao("depósito", valor);
         }else {
             System.out.println("Valor de depósito inválido");
         }

@@ -5,8 +5,8 @@ public class App {
         Endereco endereco1 = new Endereco("Avenida Pedro Marques de Medeiros", 10, "Pantanal", "Picos", "PI");
         Cliente cliente1 = new Cliente("12345678910", "João", new Date(2000, 1, 1));
 
-        Conta contaCorrente = new ContaCorrente(123, 001, 100.00, "corrente", 50.00, 2);
-        Conta contaPoupanca = new ContaPoupanca(321, 002, 200.00, "poupança", 0.1);
+        Conta contaCorrente = new ContaCorrente(123, 001, 100.00, "corrente", cliente1, new NotificacaoEmail(), 50.00, 2);
+        Conta contaPoupanca = new ContaPoupanca(321, 002, 200.00, "poupança", cliente1, new NotificacaoSMS(),0.1);
 
         contaCorrente.depositar(100);
         System.out.println("\n");
