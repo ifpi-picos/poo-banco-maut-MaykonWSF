@@ -20,12 +20,16 @@ public class App {
         System.out.println("\n");
         contaCorrente.transferencia(contaPoupanca, 25);
         System.out.println("\n");
+        contaCorrente.exibeExtrato();
 
         // Métodos da conta poupança
+        System.out.println("\n");
         contaPoupanca.depositar(50);
         System.out.println("\n");
         contaPoupanca.sacar(125);
         System.out.println("\n");
         contaPoupanca.transferencia(contaCorrente, 75);
+        System.out.println("\n");
+        contaPoupanca.exibeExtrato();
     }
 }

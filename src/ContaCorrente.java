@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class ContaCorrente extends Conta{
     private double chequeEspecial;
     private int transferenciaSemTaxa = 2;
@@ -13,6 +15,10 @@ public class ContaCorrente extends Conta{
         if (valor > 0 && valor <= this.saldo + this.chequeEspecial) {
             this.saldo -= valor;
             System.out.println("Você sacou: R$" + valor + " da sua conta corrente.");
+
+            Movimentacao movimentacao = new Movimentacao(LocalDate.now(), valor, "saque");
+            historicoMovimentacao.add(movimentacao);
+
             System.out.println("Seu saldo atual é: R$" + this.saldo);
 
             System.out.println("\n");
@@ -35,6 +41,9 @@ public class ContaCorrente extends Conta{
                 this.setSaldo(this.getSaldo() - taxa);
             }
             
+            Movimentacao movimentacao = new Movimentacao(LocalDate.now(), valor, "tranferência");
+            historicoMovimentacao.add(movimentacao);
+
             transferenciaSemTaxa --;    
             System.out.println("Seu saldo atual é: R$" + this.getSaldo());
 

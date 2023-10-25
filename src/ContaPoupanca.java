@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class ContaPoupanca extends Conta{
     private double rendimento;
 
@@ -15,6 +17,10 @@ public class ContaPoupanca extends Conta{
         if (valor > 0){
             this.saldo += valor + (valor * rendimento);
             System.out.println("Você depositou: R$" + valor + " na sua conta poupança.");
+
+            Movimentacao movimentacao = new Movimentacao(LocalDate.now(), valor, "depósito");
+            historicoMovimentacao.add(movimentacao);
+
             System.out.println("Seu saldo atual é: R$" + this.saldo);
 
             System.out.println("\n");
@@ -30,6 +36,10 @@ public class ContaPoupanca extends Conta{
             double taxa = valor * 0.05;
             this.saldo -= (valor + taxa);
             System.out.println("Você sacou: R$" + valor + " da sua conta poupança.");
+
+            Movimentacao movimentacao = new Movimentacao(LocalDate.now(), valor, "saque");
+            historicoMovimentacao.add(movimentacao);
+
             System.out.println("Seu saldo atual é: R$" + this.saldo);
 
             System.out.println("\n");
@@ -47,6 +57,10 @@ public class ContaPoupanca extends Conta{
             this.saldo -= (valor + taxa);
             contaDestino.setSaldo(contaDestino.getSaldo() + valor);
             System.out.println("Você transferiu: R$" + valor + " da sua conta poupança para a sua conta corrente.");
+
+            Movimentacao movimentacao = new Movimentacao(LocalDate.now(), valor, "tranferência");
+            historicoMovimentacao.add(movimentacao);
+
             System.out.println("Seu saldo atual é: R$" + this.saldo);
             System.out.println("\n");
             notificacao.enviarNotificacao("tranferencia", valor);
